@@ -1,0 +1,13 @@
+name: "Yay internet!"
+output_dir: "."
+navbar:
+  title: "Home"
+  right:
+    - text: "LinkIn"
+      href: www.linkedin.com/in/chuyu1996/
+    - icon: fa-envelope fa-lg
+      href: mailto:<cy2522@columbia.edu>
+    - icon: fa-github fa-lg
+      href: http://github.com/yuchu1996/
+output:
+  html_document
