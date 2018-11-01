@@ -1,0 +1,59 @@
+---
+title: "Plots"
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+library(hexbin)
+
+theme_set(theme_bw() + theme(legend.position = "right"))
+```
+
+## NOAA
+```{r}
+## importing the data
+data(ny_noaa)
+
+## clean the dataset
+noaa_tidy = ny_noaa %>% 
+  janitor::clean_names() %>%
+  separate(date, into = c("year", "month", "day"), sep = "-") %>%
+  mutate(tmax = 0.1*as.numeric(tmax) , tmin = 0.1*as.numeric(tmin) )
+```
+
+### making plots 
+```{r}
+## Make a two-panel plot showing the average temperature in January and in July in each station across years.
+
+average_temp = noaa_tidy %>%
+  filter(month %in% c("01", "07")) %>%
+  group_by(month, id, year) %>%
+  summarize(average_tmax = mean(tmax, na.rm = T)) %>%
+  ggplot(aes( x = year, y = average_tmax, fill = month)) +
+  geom_boxplot() +
+  facet_grid(month ~ .) +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1)) +
+  labs( 
+    title = " plot of average tmax",
+    x = "year",
+    y = "average tmax")
+
+ggplotly(average_temp)
+
+##tmax vs tmin for the full dataset 
+temp = ggplot(noaa_tidy, aes(x = tmin, y = tmax)) +
+  geom_hex()
+
+ggplotly(temp )
+
+sonw = noaa_tidy %>% 
+  filter(snow > 0 & snow < 100) %>%
+  ggplot( aes(x = factor(year), y = snow)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 60, hjust = 1))
+
+ggplotly(sonw)
+```
+
