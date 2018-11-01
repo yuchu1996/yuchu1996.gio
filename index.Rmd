@@ -1,0 +1,32 @@
+<div style="margin-bottom:50px;">
+
+</div>
+<center>
+<img src="TITLE.jpg" style="width:75%">
+</center>
+    
+    
+<div style="margin-bottom:50px;">    
+</div>
+
+
+##INTRODUCTION
+
+I, Chu Yu, am a new MS student of Biostatistics in Columbia University. You can know more about me here.
+
+
+##Know More About Me
+
+  * Do you want to see my resume?
+    [Chu Yu's Resume](resume.html)
+    
+  * This is my LikeIn
+    [My Linkedin](www.linkedin.com/in/chuyu1996/)
+  
+  * [My Github](https://github.com/yuchu1996)
+  
+  * [My Email](mailto:<cy2522@cumc.columbia.com>)
+  
+##Dashboard
+
+  * click here for [plots](ploty.html)
