@@ -29,4 +29,4 @@ I, Chu Yu, am a new MS student of Biostatistics in Columbia University. You can 
   
 ##Dashboard
 
-  * click here for [plots](ploty.html)
+  * click here for [plots](dashboard.html)
