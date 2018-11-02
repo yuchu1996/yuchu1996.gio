@@ -1,5 +1,9 @@
 ---
 title: "Plots"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
 ---
 ```{r setup, include=FALSE}
 library(flexdashboard)
@@ -23,7 +27,12 @@ noaa_tidy = ny_noaa %>%
   mutate(tmax = 0.1*as.numeric(tmax) , tmin = 0.1*as.numeric(tmin) )
 ```
 
-### making plots 
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+
+### the plot showing the average temperature
 ```{r}
 ## Make a two-panel plot showing the average temperature in January and in July in each station across years.
 
@@ -42,18 +51,33 @@ average_temp = noaa_tidy %>%
 
 ggplotly(average_temp)
 
+```
+
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+
+### the plot of tmax and tmin
+```{r}
 ##tmax vs tmin for the full dataset 
 temp = ggplot(noaa_tidy, aes(x = tmin, y = tmax)) +
   geom_hex()
 
-ggplotly(temp )
+ggplotly(temp)
 
+```
+
+### the density plot of snowfall
+```{r}
 sonw = noaa_tidy %>% 
   filter(snow > 0 & snow < 100) %>%
-  ggplot( aes(x = factor(year), y = snow)) +
-  geom_boxplot() +
+  ggplot( aes(x = snow)) +
+  geom_density() +
   theme(axis.text.x = element_text(angle = 60, hjust = 1))
 
 ggplotly(sonw)
+
 ```
 
