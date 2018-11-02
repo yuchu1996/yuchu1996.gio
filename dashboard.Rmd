@@ -15,7 +15,7 @@ library(hexbin)
 theme_set(theme_bw() + theme(legend.position = "right"))
 ```
 
-## NOAA
+
 ```{r}
 ## importing the data
 data(ny_noaa)
